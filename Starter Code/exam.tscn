@@ -1,3 +1,66 @@
-[gd_scene format=3 uid="uid://bunyohpobvu8b"]
+[gd_scene load_steps=5 format=3 uid="uid://bunyohpobvu8b"]
 
-[node name="root" type="Node2D"]
+[ext_resource type="Script" path="res://Controller.gd" id="1_iyesx"]
+[ext_resource type="Script" path="res://Count.gd" id="1_q8orc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dxvku"]
+distance = -750.059
+
+[sub_resource type="ImageTexture" id="ImageTexture_ycibp"]
+
+[node name="Exam" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_iyesx")
+
+[node name="HSlider" type="HSlider" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = -30.0
+offset_right = 297.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 20.0
+script = ExtResource("1_q8orc")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 20.0
+offset_right = 371.0
+offset_bottom = 43.0
+text = "0"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 15.0
+offset_right = 115.0
+offset_bottom = 39.0
+text = "Count"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 127.0
+offset_top = 63.0
+offset_right = 240.0
+offset_bottom = 94.0
+text = "Create Nodes"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(557.405, 278.941)
+shape = SubResource("WorldBoundaryShape2D_dxvku")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("ImageTexture_ycibp")
+
+[connection signal="value_changed" from="Control/HSlider" to="Control" method="_on_h_slider_value_changed"]
