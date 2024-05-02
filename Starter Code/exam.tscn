@@ -1,23 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://bunyohpobvu8b"]
+[gd_scene load_steps=6 format=3 uid="uid://bunyohpobvu8b"]
 
 [ext_resource type="Script" path="res://Controller.gd" id="1_iyesx"]
 [ext_resource type="Script" path="res://Count.gd" id="1_q8orc"]
+[ext_resource type="Texture2D" uid="uid://rb8smo0f45mc" path="res://icon.svg" id="3_t8t3k"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dxvku"]
-distance = -750.059
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bif0v"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
-[sub_resource type="ImageTexture" id="ImageTexture_ycibp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d78rl"]
+size = Vector2(125, 124)
 
 [node name="Exam" type="Node2D"]
 
-[node name="Control" type="Control" parent="."]
+[node name="CanvasLayerUI" type="CanvasLayer" parent="."]
+
+[node name="CountLabel" type="Label" parent="CanvasLayerUI"]
+offset_left = 5.0
+offset_top = 15.0
+offset_right = 115.0
+offset_bottom = 39.0
+text = "Count:"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayerUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_iyesx")
 
-[node name="HSlider" type="HSlider" parent="Control"]
+[node name="HSlider" type="HSlider" parent="CanvasLayerUI/Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -33,7 +45,7 @@ grow_vertical = 0
 max_value = 20.0
 script = ExtResource("1_q8orc")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="CanvasLayerUI/Control"]
 layout_mode = 0
 offset_left = 331.0
 offset_top = 20.0
@@ -41,26 +53,27 @@ offset_right = 371.0
 offset_bottom = 43.0
 text = "0"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 5.0
-offset_top = 15.0
-offset_right = 115.0
-offset_bottom = 39.0
-text = "Count"
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="."]
+[node name="SpawnButton" type="Button" parent="CanvasLayerUI"]
 offset_left = 127.0
 offset_top = 63.0
 offset_right = 240.0
 offset_bottom = 94.0
 text = "Create Nodes"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(557.405, 278.941)
-shape = SubResource("WorldBoundaryShape2D_dxvku")
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(506, 510)
+scale = Vector2(2.92773, 2.61914)
+texture = ExtResource("3_t8t3k")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("ImageTexture_ycibp")
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 
-[connection signal="value_changed" from="Control/HSlider" to="Control" method="_on_h_slider_value_changed"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(136, 309)
+texture = SubResource("CompressedTexture2D_bif0v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(136, 309)
+shape = SubResource("RectangleShape2D_d78rl")
+
+[connection signal="value_changed" from="CanvasLayerUI/Control/HSlider" to="CanvasLayerUI/Control" method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayerUI/SpawnButton" to="CanvasLayerUI/Control" method="_on_spawn_button_pressed"]
