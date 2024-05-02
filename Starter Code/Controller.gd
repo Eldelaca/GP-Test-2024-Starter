@@ -20,5 +20,8 @@ func _on_spawn_button_pressed():
 	var newIcon = load("res://mob.tscn")
 	var onButtonPressed = newIcon.instantiate()
 	add_child(onButtonPressed)
+	
 	print("working")
 	pass # Replace with function body.
+
+

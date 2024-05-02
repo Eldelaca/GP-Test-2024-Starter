@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bunyohpobvu8b"]
+[gd_scene load_steps=5 format=3 uid="uid://bunyohpobvu8b"]
 
 [ext_resource type="Script" path="res://Controller.gd" id="1_iyesx"]
 [ext_resource type="Script" path="res://Count.gd" id="1_q8orc"]
 [ext_resource type="Texture2D" uid="uid://rb8smo0f45mc" path="res://icon.svg" id="3_t8t3k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2iy8r"]
+size = Vector2(1439, 26)
 
 [node name="Exam" type="Node2D"]
 
@@ -58,6 +61,13 @@ text = "Create Nodes"
 position = Vector2(506, 510)
 scale = Vector2(2.92773, 2.61914)
 texture = ExtResource("3_t8t3k")
+
+[node name="Explosion" type="CharacterBody2D" parent="."]
+position = Vector2(498, 1026)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion"]
+position = Vector2(-1.5, 3)
+shape = SubResource("RectangleShape2D_2iy8r")
 
 [connection signal="value_changed" from="CanvasLayerUI/Control/HSlider" to="CanvasLayerUI/Control" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayerUI/SpawnButton" to="CanvasLayerUI/Control" method="_on_spawn_button_pressed"]

@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://doav5fybvk30c"]
+[gd_scene load_steps=4 format=3 uid="uid://doav5fybvk30c"]
+
+[ext_resource type="Script" path="res://Mob.gd" id="1_g4cpl"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4neaj"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
@@ -9,6 +11,7 @@ size = Vector2(125, 124)
 [node name="Mob" type="Node2D"]
 
 [node name="Mob" type="RigidBody2D" parent="."]
+script = ExtResource("1_g4cpl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Mob"]
 position = Vector2(136, 309)
