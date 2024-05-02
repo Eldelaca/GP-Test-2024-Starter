@@ -1,6 +1,6 @@
 extends Control
 
-
+@export var newIcon:PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -12,13 +12,13 @@ func _process(delta):
 
 
 func _on_h_slider_value_changed(value):
-	$Label.text = str(value)
+	$Number.text = str(value)
 	pass # Replace with function body.
 
 
 func _on_spawn_button_pressed():
-	var sprite = Sprite2D.new()
-	sprite.texture = load("res://icon.svg")
-	$"../Icon".add_child(sprite)
+	var newIcon = load("res://mob.tscn")
+	var onButtonPressed = newIcon.instantiate()
+	add_child(onButtonPressed)
 	print("working")
 	pass # Replace with function body.

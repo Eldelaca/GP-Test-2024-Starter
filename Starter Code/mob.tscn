@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://doav5fybvk30c"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4neaj"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltcco"]
+size = Vector2(125, 124)
+
+[node name="Mob" type="Node2D"]
+
+[node name="Mob" type="RigidBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Mob"]
+position = Vector2(136, 309)
+texture = SubResource("CompressedTexture2D_4neaj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob"]
+position = Vector2(136, 309)
+shape = SubResource("RectangleShape2D_ltcco")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Mob"]

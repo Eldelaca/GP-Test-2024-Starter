@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bunyohpobvu8b"]
+[gd_scene load_steps=4 format=3 uid="uid://bunyohpobvu8b"]
 
 [ext_resource type="Script" path="res://Controller.gd" id="1_iyesx"]
 [ext_resource type="Script" path="res://Count.gd" id="1_q8orc"]
 [ext_resource type="Texture2D" uid="uid://rb8smo0f45mc" path="res://icon.svg" id="3_t8t3k"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bif0v"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d78rl"]
-size = Vector2(125, 124)
 
 [node name="Exam" type="Node2D"]
 
@@ -45,7 +39,7 @@ grow_vertical = 0
 max_value = 20.0
 script = ExtResource("1_q8orc")
 
-[node name="Label" type="Label" parent="CanvasLayerUI/Control"]
+[node name="Number" type="Label" parent="CanvasLayerUI/Control"]
 layout_mode = 0
 offset_left = 331.0
 offset_top = 20.0
@@ -64,16 +58,6 @@ text = "Create Nodes"
 position = Vector2(506, 510)
 scale = Vector2(2.92773, 2.61914)
 texture = ExtResource("3_t8t3k")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(136, 309)
-texture = SubResource("CompressedTexture2D_bif0v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(136, 309)
-shape = SubResource("RectangleShape2D_d78rl")
 
 [connection signal="value_changed" from="CanvasLayerUI/Control/HSlider" to="CanvasLayerUI/Control" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayerUI/SpawnButton" to="CanvasLayerUI/Control" method="_on_spawn_button_pressed"]
